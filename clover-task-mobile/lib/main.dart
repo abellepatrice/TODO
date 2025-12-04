@@ -1,3 +1,4 @@
+import 'package:clover_todo/pages/about_help_page.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +50,8 @@ class CloverApp extends StatelessWidget {
     '/profile': (_) => const ProfilePage(),
     '/settings': (_) => const SettingsPage(),
     '/add': (_) => const AddTaskPage(),
+    '/about_help': (_) => const AboutHelpPage(),
+
       },
     );
   }

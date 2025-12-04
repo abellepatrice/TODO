@@ -4,7 +4,7 @@
 - the folders include:
 +  clover-task-web
 +  clover-task-backend
-+   clover-task-mobile
++  clover-task-mobile
 
 ## Backend
 - This file contains the backend for the TODO App buit in Nest JS

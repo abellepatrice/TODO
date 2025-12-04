@@ -33,7 +33,7 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
       case 'high':
         return Colors.red;
       case 'medium':
-        return Colors.orange;
+        return Colors.yellow;
       case 'low':
         return Colors.green;
       default:

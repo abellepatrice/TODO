@@ -72,7 +72,8 @@ Before running this project, ensure you have the following installed:
    ```
 
 6. **Access the application**:
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   Open [http://localhost:3001](http://localhost:3001) in your browser.
+   * NOTE the port 3000 is already being used by Nest JS
 
 ## Usage
 

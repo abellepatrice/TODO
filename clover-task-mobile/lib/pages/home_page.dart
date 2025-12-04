@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   bool loading = true;
   String selectedPriority = 'All';
   int currentIndex = 0;
-  String username = 'Abelle'; // Replace with actual username if available
+  String username = 'User'; 
   final Color themeColor = const Color(0xFF7AE615);
 
   @override
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       case 'high':
         return Colors.red;
       case 'medium':
-        return Colors.orange;
+        return Colors.yellow;
       case 'low':
         return Colors.green;
       default:

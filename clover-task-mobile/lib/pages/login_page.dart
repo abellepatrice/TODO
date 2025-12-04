@@ -1,4 +1,3 @@
-// lib/pages/login_page.dart
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../widgets/input_field.dart';
@@ -41,7 +40,6 @@ class _LoginPageState extends State<LoginPage>
   }
 
   Future<void> _signIn() async {
-    // basic validation
     if (emailController.text.trim().isEmpty ||
         passwordController.text.isEmpty) {
       _showMessage("Email & password are required");
