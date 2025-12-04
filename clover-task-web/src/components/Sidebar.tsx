@@ -1,20 +1,24 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faUser, faHistory, faPlus, faSignOutAlt, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouse,
+  faUser,
+  faHistory,
+  faPlus,
+  faSignOutAlt,
+  faBars,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "../app/lib/supabaseClient";
 
 export default function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-
-  const logout = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
-  };
 
   const primaryGreen = "#7ae615";
 
@@ -27,20 +31,30 @@ export default function Sidebar() {
 
   const isActive = (href: string) => pathname === href;
 
+  const logout = async () => {
+    const confirmed = confirm("Are you sure you want to log out?");
+    if (confirmed) {
+      await supabase.auth.signOut();
+      router.push("/login");
+    }
+  };
+
   return (
     <>
-      {/* Mobile Hamburger */}
       <button
-        className="md:hidden h-full fixed top-4 left-4 z-50 bg-white p-2 rounded shadow"
+        className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded shadow"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-gray-900 w-6 h-6" />
+        <FontAwesomeIcon
+          icon={isOpen ? faTimes : faBars}
+          className="text-gray-900 w-6 h-6"
+        />
       </button>
 
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-full w-64 bg-white p-6 shadow-md space-y-6
+          fixed top-0 left-0 h-screen w-64 bg-white p-6 shadow-md space-y-6
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block
         `}
@@ -53,9 +67,17 @@ export default function Sidebar() {
               key={link.href}
               href={link.href}
               className={`flex items-center gap-3 px-4 py-3 rounded-lg transition
-                ${isActive(link.href) ? "bg-green-100 text-green-700" : "text-gray-900 hover:bg-gray-100"}`}
+                ${
+                  isActive(link.href)
+                    ? "bg-green-100 text-green-700"
+                    : "text-gray-900 hover:bg-gray-100"
+                }`}
             >
-              <FontAwesomeIcon icon={link.icon} className="w-5 h-5" style={{ color: primaryGreen }} />
+              <FontAwesomeIcon
+                icon={link.icon}
+                className="w-5 h-5"
+                style={{ color: primaryGreen }}
+              />
               <span className="text-lg font-medium">{link.name}</span>
             </Link>
           ))}
@@ -64,7 +86,11 @@ export default function Sidebar() {
             onClick={logout}
             className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-900 hover:bg-gray-100 transition w-full text-left mt-3"
           >
-            <FontAwesomeIcon icon={faSignOutAlt} className="w-5 h-5" style={{ color: primaryGreen }} />
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              className="w-5 h-5"
+              style={{ color: primaryGreen }}
+            />
             <span className="text-lg font-medium">Logout</span>
           </button>
         </nav>

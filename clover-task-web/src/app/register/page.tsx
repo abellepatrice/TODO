@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -6,11 +7,9 @@ import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const router = useRouter();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -24,12 +23,7 @@ export default function RegisterPage() {
     }
 
     setLoading(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
+    const { error } = await supabase.auth.signUp({ email, password });
     setLoading(false);
 
     if (error) {
@@ -40,17 +34,25 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-6 rounded-xl shadow w-full max-w-sm">
-        <h1 className="text-xl font-bold mb-4">Create Account</h1>
+    <main className="min-h-screen flex items-center justify-center bg-gray-100 px-4 font-sans">
+      <div className="w-full max-w-sm bg-white shadow-lg rounded-2xl p-8 flex flex-col gap-6 border border-gray-200">
+         {/* LOGO */}
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight text-green-500">
+            Clover
+          </h1>
+          <p className="text-sm mt-1 text-gray-500">Task Manager</p>
+        </div>
 
-        {error && <p className="text-red-600 text-sm mb-2">{error}</p>}
+        <h1 className="text-3xl font-bold text-gray-900 text-center">Create Account</h1>
 
-        <form onSubmit={handleRegister} className="space-y-4">
+        {error && <p className="text-red-600 text-sm text-center">{error}</p>}
+
+        <form onSubmit={handleRegister} className="flex flex-col gap-4 mt-2">
           <input
             type="email"
             placeholder="Email"
-            className="w-full p-2 border rounded"
+            className="h-12 w-full rounded-xl border border-gray-300 p-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -59,7 +61,7 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-2 border rounded"
+            className="h-12 w-full rounded-xl border border-gray-300 p-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -68,7 +70,7 @@ export default function RegisterPage() {
           <input
             type="password"
             placeholder="Confirm Password"
-            className="w-full p-2 border rounded"
+            className="h-12 w-full rounded-xl border border-gray-300 p-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
             required
@@ -77,15 +79,15 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white p-2 rounded-lg disabled:opacity-50"
+            className="h-12 w-full rounded-xl bg-green-500 text-white font-bold text-sm hover:bg-green-600 active:scale-95 transition disabled:opacity-50"
           >
             {loading ? "Creating account..." : "Register"}
           </button>
         </form>
 
-        <p className="mt-3 text-sm">
+        <p className="mt-3 text-sm text-gray-500 text-center">
           Already have an account?{" "}
-          <a className="text-blue-600" href="/login">
+          <a href="/login" className="font-bold text-green-500 hover:underline">
             Login
           </a>
         </p>

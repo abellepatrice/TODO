@@ -9,7 +9,7 @@ export default function Navbar() {
       {/* Left: Logo */}
       <div className="flex items-center">
         <span className="text-2xl font-bold text-green-600 tracking-wide">
-          🌿Clover
+          Clover
         </span>
       </div>
 

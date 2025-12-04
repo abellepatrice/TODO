@@ -59,4 +59,27 @@ export class TasksService {
     if (error) throw error;
     return { message: 'Task deleted' };
   }
+  async getCompletedTasks(userId: string) {
+    const { data, error } = await this.supabase.client
+      .from('tasks')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_completed', true)
+      .order('updated_at', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  }
+
+  async getEditedTasks(userId: string) {
+    const { data, error } = await this.supabase.client
+      .from('tasks')
+      .select('*')
+      .eq('user_id', userId)
+      .neq('created_at', 'updated_at') 
+      .order('updated_at', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  }
 }

@@ -19,8 +19,8 @@ export class TasksController {
   async getOneTask(@Req() req, @Param('id') id: string) {
     const userId = req.user.id;
     const task = await this.tasksService.getOneTask(userId, id);
-    return { data: task }; 
-  }
+    return task;  // Major fix *******
+    }
 
   @UseGuards(SupabaseAuthGuard)
   @Post()
@@ -41,6 +41,19 @@ export class TasksController {
   async deleteTask(@Req() req, @Param('id') id: string) {
     const userId = req.user.id;
     return this.tasksService.deleteTask(userId, id);
+  }
+  @UseGuards(SupabaseAuthGuard)
+  @Get('completed')
+  async getCompleted(@Req() req) {
+    const userId = req.user.id;
+    return this.tasksService.getCompletedTasks(userId);
+  }
+
+  @UseGuards(SupabaseAuthGuard)
+  @Get('edited')
+  async getEdited(@Req() req) {
+    const userId = req.user.id;
+    return this.tasksService.getEditedTasks(userId);
   }
 }
 

@@ -24,9 +24,13 @@ axiosInstance.interceptors.request.use(async (config) => {
 });
 
 export const api = {
-  getTasks: () => axiosInstance.get("/tasks"),
+  getTasks: () => axiosInstance.get(`tasks`),
   getTask: (id: string) => axiosInstance.get(`/tasks/${id}`),
   createTask: (body: any) => axiosInstance.post("/tasks", body),
   updateTask: (id: string, body: any) => axiosInstance.put(`/tasks/${id}`, body),
   deleteTask: (id: string) => axiosInstance.delete(`/tasks/${id}`),
+  getCompletedTasks: () => axiosInstance.get(`/tasks/completed`),
+  getEditedTasks: () => axiosInstance.get(`/tasks/edited`),
+  getProfile: () => axiosInstance.get(`/auth/me`),
+
 };
