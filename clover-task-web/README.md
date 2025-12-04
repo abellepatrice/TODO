@@ -92,11 +92,11 @@ Before running this project, ensure you have the following installed:
 ## Screenshots
 
 ### Login Page
-![Login Page](assets/Login Page.bmp)
+![Login Page](assets/LoginPage.bmp)
 Secure authentication interface with email/password login and registration link.
 
 ### Register Page
-![Register Page](assets/Register Page.bmp)
+![Register Page](assets/RegisterPage.bmp)
 User registration form with validation and account creation.
 
 ### Dashboard
@@ -108,15 +108,15 @@ Main dashboard displaying task cards with priority filtering tabs and quick acti
 User profile view showing account information, login history, and account creation date.
 
 ### Task Detail
-![Task Detail](assets/Task Detail.bmp)
+![Task Detail](assets/TaskDetail.bmp)
 Detailed view of individual tasks with full description and management options.
 
 ### Create Task
-![Create Task](assets/Create task Image.bmp)
+![Create Task](assets/CreateTaskImage.bmp)
 Task creation form with title, description, and priority selection.
 
 ### Edit Task Page
-![Edit Task](assets/Edit Task Page.bmp)
+![Edit Task](assets/EditTaskPage.bmp)
 Task editing interface for updating existing task information.
 
 ## Decisions and Tradeoffs
